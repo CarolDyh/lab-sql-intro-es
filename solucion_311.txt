@@ -1,0 +1,39 @@
+Tarea 1:
+
+SELECT "Complaint Type", COUNT(*) AS total_complaints
+FROM complaints
+GROUP BY "Complaint Type"
+ORDER BY total_complaints DESC
+LIMIT 5;
+
+Los cinco tipos de quejas más comunes destacan por las quejas por aparcamiento ilegal, siendo el motivo principal de quejas seguido de cerca por la provisión de agua caliente, que están más del doble por encima de la siguiente queja más común. Esto indica que existe una presión significativa sobre el espacio vial urbano, posiblemente por congestión del tráfico y la falta de aparcamiento, que se ve reforzada por el quinto tipo de queja de la lista (entrada bloqueada), y por otro lado problemas persistentes en la provisión de servicios básicos en viviendas (ya que tres de las cinco principales quejas tienen relación con este tema).
+En conjunto, estos datos reflejan malestar ciudadano por la gestión del espacio urbano por un lado, y las condiciones de vida en el ámbito residencial por el otro.
+
+Tarea 2:
+
+SELECT Borough, COUNT(*) AS total_complaints
+FROM complaints
+GROUP BY Borough
+ORDER BY total_complaints DESC;
+
+Brooklyn encabeza el número total de quejas, seguido por Queens, Manhattan y el Bronx. Staten Island presenta muchas menos incidencias, lo cual puede ser esperado por su menor población y densidad urbana. La categoría Unspecified indica algunos registros con datos incompletos aunque el volumen de datos no es significativo. En general, los distritos más poblados acumulan más quejas, lo que sugiere una relación entre densidad y quejas.
+
+Tarea 3:
+
+SELECT "Complaint Type", COUNT(*) AS total_complaints
+FROM complaints
+GROUP BY "Complaint Type"
+HAVING COUNT(*) > 1000
+ORDER BY total_complaints DESC;
+
+Hay 37 tipos de queja que superan las 1000 incidencias, lo cual indica que no se trata de casos aislados, sino de problemas repetidos y estructurales. La variedad de quejas abarca desde infraestructuras urbanas (calles, alumbrado, árboles) hasta servicios básicos (agua, calefacción, recolección de basura), lo que sugiere que las prioridades de atención deben estar bien distribuidas entre servicios públicos, mantenimiento urbano y control de normativas vecinales.
+
+Tarea 4:
+
+SELECT Borough, COUNT(*) AS num_complaints
+FROM complaints
+WHERE "Complaint Type" = 'Noise - Residential'
+GROUP BY Borough
+ORDER BY num_complaints DESC;
+
+Brooklyn y el Bronx son los distritos con mayor número de quejas por ruido, seguidos de cerca por Queens y Manhattan. Staten Island, como en otros indicadores, registra una cifra muy inferior, lo cual puede ser esperable por su menor densidad de población como comentamos en las tareas anteriores. Este patrón sugiere que los problemas de convivencia y contaminación acústica en entornos residenciales se concentran especialmente en los distritos con mayor densidad poblacional. Es probable que influya también la antigüedad de las construcciones, y la falta de aislamiento acústico. Estos datos podrían orientar políticas de control de ruidos o mejoras en la calidad de la edificación en zonas prioritarias.
